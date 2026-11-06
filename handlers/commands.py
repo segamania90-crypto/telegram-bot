@@ -18,4 +18,8 @@ async def video_request(message: Message):
     url_id = hf.generate_url_id(url)
     storage.url_storage[url_id] = url
     storage.save_url_storage(storage.url_storage)
-    await message.answer ("Жүктеу форматын таңдаңыз:", reply_markup= await in_kb.format_btn(url_id)) 
+    await message.answer("Жүктеу форматын таңдаңыз:", reply_markup=await in_kb.format_btn(url_id))
+
+@router.message()
+async def unknown_message(message: Message):
+    await message.answer("⚠️ Уақытты алмай, 🎬\nYouTube немесе TikTok сілтемесін жібер!")
